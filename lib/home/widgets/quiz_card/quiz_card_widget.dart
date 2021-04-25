@@ -5,7 +5,16 @@ import 'package:devquiz/shared/widgets/process_indicator/process_indicator_widge
 import 'package:flutter/material.dart';
 
 class QuizCardWidget extends StatelessWidget {
-  const QuizCardWidget({key}) : super(key: key);
+  final String title;
+  final String completed;
+  final double percent;
+
+  const QuizCardWidget({
+    key,
+    @required this.title,
+    @required this.completed,
+    @required this.percent,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,7 @@ class QuizCardWidget extends StatelessWidget {
           ),
           SizedBox(height: 24),
           Text(
-            "Gerenciamento de Estado",
+            title,
             style: AppTextStyles.heading15,
           ),
           Row(
@@ -34,14 +43,14 @@ class QuizCardWidget extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "3 de 10",
+                  completed,
                   style: AppTextStyles.body11,
                 ),
               ),
               Expanded(
                 flex: 4,
                 child: ProcessIndicatoWidget(
-                  value: .3,
+                  value: percent,
                 ),
               )
             ],
