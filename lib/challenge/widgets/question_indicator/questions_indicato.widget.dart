@@ -3,7 +3,13 @@ import 'package:devquiz/shared/widgets/process_indicator/process_indicator_widge
 import 'package:flutter/material.dart';
 
 class QuestionIndicatorWidget extends StatelessWidget {
-  const QuestionIndicatorWidget({key}) : super(key: key);
+  final int currentPage;
+  final int length;
+  const QuestionIndicatorWidget({
+    key,
+    @required this.length,
+    @required this.currentPage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +20,17 @@ class QuestionIndicatorWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Questão 04",
+              "Questão $currentPage",
               style: AppTextStyles.body,
             ),
             Text(
-              "de 10",
+              "$currentPage de $length",
               style: AppTextStyles.body,
             ),
           ],
         ),
         SizedBox(height: 16),
-        ProcessIndicatoWidget(
-          value: .7,
-        )
+        ProcessIndicatoWidget(value: currentPage / length)
       ]),
     );
   }
